@@ -16,18 +16,18 @@
     </div>
 
     <script>
-        async function sendMsg(){
+        async function explain(){
             const userCode = document.getElementById("codeInput").value;
 
-            document.getElementById("output").innerText = "Thinking....."
+            document.getElementById(".output").innerText = "Thinking....."
 
             const res = await fetch("/chat", {
                 method: "POST",
                 headers: {"content-type": "application/json"},
-                body: JSON.stringify({message: "Explain this code like I am 5 year old \n\n${userCode}"})
+                body: JSON.stringify({message: 'Explain this code like I am 5 year old: \n\n${userCode}'})
             });
             const data = await res.json();
-            document.getElementById("output").innerText = data.reply.content;
+            document.getElementById(".output").innerText = data.reply.content;
         }
         
     </script>
