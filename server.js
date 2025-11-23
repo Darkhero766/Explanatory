@@ -4,7 +4,7 @@ import express from "express"
 import OpenAi from "openai"
 
 const app = express();
-const openai = new OpenAi({apikey: process.env.OPENAI_KEY_AI});
+const openai = new OpenAi({apikey: process.env.OPENAI});
 
 app.use(express.json());
 
