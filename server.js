@@ -1,10 +1,10 @@
 import dotenv from "dotenv"
 dotenv.config()
 import express from "express"
-import OpenAi from "openai"
+import OpenAI from "openai"
 
 const app = express();
-const openai = new OpenAi({apikey: process.env.OPENAI});
+const openai = new OpenAI({apikey: process.env.OPENAI});
 
 app.use(express.json());
 
@@ -14,7 +14,7 @@ app.post("/chat", async (req, res) => {
         messages: [{role: "user", content: req.body.message}]
     });
 
-    req.json({reply: response.choices[0].message});
+    res.json({reply: response.choices[0].message});
 });
 
 app.listen(3000, () => console.log("server running kn 3000"));
