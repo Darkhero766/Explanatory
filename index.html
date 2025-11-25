@@ -10,29 +10,32 @@
     <div class="box">
         <h2>Explain code like I am 5</h2>
         <textarea  id="codeInput" placeholder="Paste your code here..."></textarea>
-        <button onClick="explain()"">Explain</button>
+        <button onclick="explain()">Explain</button>
         <div class="output"></div>
 
     </div>
 
     <script>
+        const BACKEND_URL = "https://f11d6128-bd81-4a3c-bd68-fbfac391ae36-00-25mkh94kanluz.sisko.replit.dev";
+        
         async function explain(){
             const userCode = document.getElementById("codeInput").value;
 
-            document.getElementById(".output").innerText = "Thinking....."
+            document.querySelector(".output").innerText = "Thinking.....";
 
-            const res = await fetch("/chat", {
-                method: "POST",
-                headers: {"content-type": "application/json"},
-                body: JSON.stringify({message: 'Explain this code like I am 5 year old: \n\n${userCode}'})
-            });
-            const data = await res.json();
-            document.getElementById(".output").innerText = data.reply.content;
+            try {
+                const res = await fetch(BACKEND_URL + "/chat", {
+                    method: "POST",
+                    headers: {"content-type": "application/json"},
+                    body: JSON.stringify({message: `Explain this code like I am 5 year old: \n\n${userCode}`})
+                });
+                const data = await res.json();
+                document.querySelector(".output").innerText = data.reply.content;
+            } catch (error) {
+                document.querySelector(".output").innerText = "Error: " + error.message;
+            }
         }
         
     </script>
 </body>
 </html>
-
-
-
