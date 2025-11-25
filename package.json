@@ -1,0 +1,20 @@
+{
+  "name": "code-explainer",
+  "version": "1.0.0",
+  "description": "Explain code like I am 5",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^22.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "openai": "^4.20.1"
+  }
+}

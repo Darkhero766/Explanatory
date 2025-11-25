@@ -1,12 +1,14 @@
+
 import dotenv from "dotenv"
 dotenv.config()
 import express from "express"
 import OpenAI from "openai"
 
 const app = express();
-const openai = new OpenAI({apikey: process.env.OPENAI});
+const openai = new OpenAI({apiKey: process.env.OPENAI});
 
 app.use(express.json());
+app.use(express.static('.'));
 
 app.post("/chat", async (req, res) => {
     const response = await openai.chat.completions.create({
@@ -17,5 +19,4 @@ app.post("/chat", async (req, res) => {
     res.json({reply: response.choices[0].message});
 });
 
-app.listen(3000, () => console.log("server running kn 3000"));
-
+app.listen(5000, () => console.log("Server running on port 5000"));
